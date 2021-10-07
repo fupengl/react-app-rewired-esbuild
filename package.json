@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "fupeng",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fupengl/react-app-rewired-esbuild/issues"
   },

@@ -5,6 +5,13 @@ const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 module.exports = rewiredEsbuild;
 
+/**
+ * replace babel to esbuild
+ * @link https://github.com/privatenumber/esbuild-loader
+ * @param ESBuildMinifyOptions
+ * @param ESBuildLoaderOptions
+ * @return {function(*, *): *}
+ */
 function rewiredEsbuild({ ESBuildMinifyOptions, ESBuildLoaderOptions }) {
   return function (config, webpackEnv) {
     const useTypeScript = fs.existsSync(paths.appTsConfig);
