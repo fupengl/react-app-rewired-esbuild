@@ -12,7 +12,7 @@ module.exports = rewiredEsbuild;
  * @param ESBuildLoaderOptions
  * @return {function(*, *): *}
  */
-function rewiredEsbuild({ ESBuildMinifyOptions, ESBuildLoaderOptions }) {
+function rewiredEsbuild({ ESBuildMinifyOptions, ESBuildLoaderOptions } = {}) {
   return function (config, webpackEnv) {
     const useTypeScript = fs.existsSync(paths.appTsConfig);
 
