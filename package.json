@@ -12,8 +12,12 @@
     "url": "git+https://github.com/fupengl/react-app-rewired-esbuild.git"
   },
   "keywords": [],
-  "author": "fupeng",
-  "license": "MIT",
+  "license": "ISC",
+  "author": {
+    "name": "fupengl",
+    "email": "fupenglxy@gmail.com",
+    "url": "https://github.com/fupengl"
+  },
   "bugs": {
     "url": "https://github.com/fupengl/react-app-rewired-esbuild/issues"
   },
