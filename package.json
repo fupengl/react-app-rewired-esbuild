@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/fupengl/react-app-rewired-esbuild.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react-scripts",
     "react-app",
