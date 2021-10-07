@@ -22,7 +22,7 @@ jobs:
       - run: npm run release
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -30,7 +30,7 @@ jobs:
           branch: ${{ github.ref }}
 
   publish-gpr:
-    needs: [publish-npm]
+    needs: publish-npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,4 +40,4 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
