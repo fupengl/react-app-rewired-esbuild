@@ -2,7 +2,9 @@
 
 Use `esbuild` in your `create-react-app`.   
 
-`react-scripts` When the project grows, the compilation speed is slow, and the development uses `esbuild` to improve the compilation speed
+`react-scripts` When the project grows, the compilation speed is slow, and the development uses `esbuild` to improve the compilation speed.
+
+> It is recommended to use the development mode to ensure stability !!!
 
 ## Features
 
@@ -58,6 +60,15 @@ Default:
     css: true,
 }
 ``` 
+
+## FQA
+
+### ReferenceError: React is not defined
+Added react introduction in the first line of the error file,Originally, babel-plugin-react-app handled this situation, but esbuild did not.   
+
+### Why is it faster?
+Originally, create-react-app was compiled with babel, and [esbuild](https://github.com/evanw/esbuild) would be faster to compile
+
 ## License
 
 MIT © [fupengl](https://github.com/fupengl)
