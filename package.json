@@ -11,7 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/fupengl/react-app-rewired-esbuild.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react-scripts",
+    "react-app",
+    "esbuild",
+    "react-app-rewired",
+    "customize-cra"
+  ],
   "license": "ISC",
   "author": {
     "name": "fupengl",
