@@ -23,7 +23,7 @@ This project is based on [`react-app-rewired`](https://github.com/timarney/react
 ```js
 /* config-overrides.js */
 
-const rewiredEsbuild = require('eact-app-rewired-esbuild');
+const rewiredEsbuild = require('react-app-rewired-esbuild');
 
 module.exports = function override(config, env) {
   // your config ...
