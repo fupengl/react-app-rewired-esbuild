@@ -10,33 +10,36 @@ module.exports = rewiredEsbuild;
  * @link https://github.com/privatenumber/esbuild-loader
  * @param ESBuildMinifyOptions
  * @param ESBuildLoaderOptions
+ * @param onlyMinimizer
  * @return {function(*, *): *}
  */
-function rewiredEsbuild({ ESBuildMinifyOptions, ESBuildLoaderOptions } = {}) {
-  return function (config, webpackEnv) {
+function rewiredEsbuild({ ESBuildMinifyOptions, ESBuildLoaderOptions, onlyMinimizer } = {}) {
+  return function (config) {
     const useTypeScript = fs.existsSync(paths.appTsConfig);
 
-    // replace babel-loader to esbuild-loader
-    for (const { oneOf } of config.module.rules) {
-      if (oneOf) {
-        let babelLoaderIndex = -1;
-        const rules = Object.entries(oneOf);
-        for (const [index, rule] of rules.slice().reverse()) {
-          if (rule.loader && rule.loader.includes(path.sep + 'babel-loader' + path.sep)) {
-            oneOf.splice(index, 1);
-            babelLoaderIndex = index;
+    if (!onlyMinimizer) {
+      // replace babel-loader to esbuild-loader
+      for (const { oneOf } of config.module.rules) {
+        if (oneOf) {
+          let babelLoaderIndex = -1;
+          const rules = Object.entries(oneOf);
+          for (const [index, rule] of rules.slice().reverse()) {
+            if (rule.loader && rule.loader.includes(path.sep + 'babel-loader' + path.sep)) {
+              oneOf.splice(index, 1);
+              babelLoaderIndex = index;
+            }
           }
-        }
-        if (~babelLoaderIndex) {
-          oneOf.splice(babelLoaderIndex, 0, {
-            test: /\.(js|mjs|jsx|ts|tsx)$/,
-            include: [paths.appSrc],
-            loader: require.resolve('esbuild-loader'),
-            options: ESBuildLoaderOptions || {
-              loader: useTypeScript ? 'tsx' : 'jsx',
-              target: 'es2015',
-            },
-          });
+          if (~babelLoaderIndex) {
+            oneOf.splice(babelLoaderIndex, 0, {
+              test: /\.(js|mjs|jsx|ts|tsx)$/,
+              include: [paths.appSrc],
+              loader: require.resolve('esbuild-loader'),
+              options: ESBuildLoaderOptions || {
+                loader: useTypeScript ? 'tsx' : 'jsx',
+                target: 'es2015',
+              },
+            });
+          }
         }
       }
     }
